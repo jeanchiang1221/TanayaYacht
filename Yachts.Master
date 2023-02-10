@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Yachts.master.cs" Inherits="yatch_project.Yachts" %>
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+    Tayana | Tayana Yachts Official Website
+  </title>
+  <script type="text/javascript" src="Scripts/jquery.min.js"></script>
+  <!--[if lt IE 7]>
+  <script type="text/javascript" src="javascript/iepngfix_tilebg.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link href="css/homestyle.css" rel="stylesheet" type="text/css" />
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/pagination_new.css" rel="stylesheet" type="text/css" />
+      <%--    <link href="Admin/css/sb-admin-2.css" rel="stylesheet">--%>
+  <script type="text/javascript">
+      $(function () {
+          $('.topbuttom').click(function () {
+              $('html, body').scrollTop(0);
+          });
+      });
+  </script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.ad-gallery.css" />
+  <style type="text/css">
+    img,
+    div,
+    input {
+      behavior: url("");
+    }
+  </style>
+  <script type="text/javascript" src="Scripts/jquery.ad-gallery.js"></script>
+  <script type="text/javascript">
+      $(function () {
+          var galleries = $('.ad-gallery').adGallery();
+          galleries[0].settings.effect = 'fade';
+          if ($('.banner input[type=hidden]').val() == "0") {
+              $(".bannermasks").hide();
+              $(".banner").hide();
+              $("#crumb").css("top", "125px");
+          }
+      });
+  </script>
+
+
+
+<%--    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>--%>
+</head>
+
+<body>
+  
+
+<div class="contain">
+    <div class="sub">
+      <p>
+        <a href="Index.aspx">Home</a>
+      </p>
+    </div>
+    <!--------------------------------選單開始---------------------------------------------------->
+    <div id="logol"><a href="Index.aspx"><img src="images/logo001.gif" alt="Tayana" /></a></div>
+    <div class="menu">
+      <ul>
+        <li class="menuli01"><a href="Yachts_OverView.aspx">Yachts</a></li>
+        <li class="menuli02"><a href="News.aspx">NEWS</a></li>
+        <li class="menuli03"><a href="Company.aspx">COMPANY</a></li>
+        <li class="menuli04"><a href="Dealers.aspx">DEALERS</a></li>
+        <li class="menuli05"><a href="Contact.aspx">CONTACT</a></li>
+      </ul>
+    </div>
+    <%--<form name="aspnetForm" method="post" action="Yachts_Layout.html?id=6d245b62-ff07-463b-95b3-277f0e5aac25" id="aspnetForm">--%>
+       
+    <%--  <div>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+          value="/wEPDwUJOTQ4NDIwODk2D2QWAmYPZBYCAgMPZBYCAgEPZBYMZg9kFgICAg8WAh4LXyFJdGVtQ291bnQCDhYcAgEPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNDI2MTAyODQxLmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDQyNjEwMjg0MS5qcGdkAgIPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNDI2MTAzNDI5LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDQyNjEwMzQyOS5qcGdkAgMPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNDI2MTA0MjA3LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDQyNjEwNDIwNy5qcGdkAgQPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNDE2MTAxNDI4LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDQxNjEwMTQyOC5qcGdkAgUPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNTA4MDQ0ODQ1LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDUwODA0NDg0NS5qcGdkAgYPZBYCZg8VAiN1cGxvYWQvSW1hZ2VzLzIwMTIwNDAyMDQzNTAyLS0xLmpwZyR1cGxvYWQvSW1hZ2VzL3MyMDEyMDQwMjA0MzUwMi0tMS5qcGdkAgcPZBYCZg8VAiN1cGxvYWQvSW1hZ2VzLzIwMTIwNDAyMDQzNTA5LS0xLmpwZyR1cGxvYWQvSW1hZ2VzL3MyMDEyMDQwMjA0MzUwOS0tMS5qcGdkAggPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNDE0MTIxMTQyLmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDQxNDEyMTE0Mi5qcGdkAgkPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNDE0MTIxMzE5LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDQxNDEyMTMxOS5qcGdkAgoPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNjEzMDk1OTMzLmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDYxMzA5NTkzMy5qcGdkAgsPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNjEzMDk1OTQzLmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDYxMzA5NTk0My5qcGdkAgwPZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNjEzMDk1OTU5LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDYxMzA5NTk1OS5qcGdkAg0PZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNjEzMTAwMDE4LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDYxMzEwMDAxOC5qcGdkAg4PZBYCZg8VAiB1cGxvYWQvSW1hZ2VzLzIwMTIwNjEzMTAwMDI5LmpwZyF1cGxvYWQvSW1hZ2VzL3MyMDEyMDYxMzEwMDAyOS5qcGdkAgEPFgIfAAIHFg4CAQ9kFgJmDxUCOllhY2h0c19MYXlvdXQuYXNweD9pZD02ZDI0NWI2Mi1mZjA3LTQ2M2ItOTViMy0yNzdmMGU1YWFjMjUJVGF5YW5hIDM3ZAICD2QWAmYPFQI6WWFjaHRzX0xheW91dC5hc3B4P2lkPTVmYjg0ZTE1LTA0MTQtNDRmOS1iNzIzLTMyYTFjNDY4NWFhMwlUYXlhbmEgNDZkAgMPZBYCZg8VAjpZYWNodHNfTGF5b3V0LmFzcHg/aWQ9YzBhZTZjNjktN2IzNi00ODZkLTk3ZTYtZmQzYmYyMDA2NGU1CVRheWFuYSA0OGQCBA9kFgJmDxUCOllhY2h0c19MYXlvdXQuYXNweD9pZD03ODJhMjg2Mi1lZGUxLTRmOGUtOWUyZS1kM2U4OGRkMGUzNTYaVGF5YW5hIDU0ICAgKE5ldyBCdWlsZGluZylkAgUPZBYCZg8VAjpZYWNodHNfTGF5b3V0LmFzcHg/aWQ9OGZhNWNlM2UtNDM3Zi00YjFiLWI3MTctMjYwMmU3MTU4ZTQwCVRheWFuYSA1OGQCBg9kFgJmDxUCOllhY2h0c19MYXlvdXQuYXNweD9pZD1lZTk1MWRkYS1mYWQ4LTQyYjktOTA1Ni01MjQ3MzE3MGQ3MjkJVGF5YW5hIDY0ZAIHD2QWAmYPFQI6WWFjaHRzX0xheW91dC5hc3B4P2lkPTNjNTA3ODU3LWU2ZGEtNDRlMC05NWFiLWYwNThkNzkzYzA5YQhJU0FSQSA1MGQCAg8WAh4EVGV4dAUJVGF5YW5hIDM3ZAIDDxYCHwEFCVRheWFuYSAzN2QCBA8PFgIeB1Zpc2libGVoZGQCBQ8WAh8AAgIWBAIBD2QWAmYPFQEjdXBsb2FkL0ltYWdlcy8yMDEyMDQwNTAyNTc0My0tMS5qcGdkAgIPZBYCZg8VASN1cGxvYWQvSW1hZ2VzLzIwMTIwNDA1MDI1NzU4LS0xLmpwZ2RkhjNfYeh3BcfwdZPmIU3o5ner2lM=" />
+      </div>
+      <div>
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AB8E19D1" />
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+          value="/wEWAgLiodrqDQL9+YC2DRb9IW7sDgbGvg4SsnNgNTB03iKa" />
+      </div>--%>
+      <!--------------------------------選單開始結束---------------------------------------------------->
+ 
+               <!--------------------------------Content page放這裡---------------------------------------------------->
+            
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        
+<%-- </form>--%>
+            <!--------------------------------落款開始---------------------------------------------------->
+    <div class="footer">
+      <div class="footerp00">
+        <a href="http://www.tognews.com/" target="_blank">
+          <p><img src="images/tog.jpg" alt="TOG" /></p>
+        </a>
+        <p class="footerp001">© 1973-2012 Tayana Yachts, Inc. All Rights Reserved</p>
+      </div>
+      <div class="footer01">
+        <span>No. 60, Hai Chien Road, Chung Men Li, Lin Yuan District, Kaohsiung City, Taiwan, R.O.C.</span><br />
+        <span>TEL：+886(7)641-2721</span> <span>FAX：+886(7)642-3193</span>
+      </div>
+    </div>
+    <!--------------------------------落款結束---------------------------------------------------->
+   </div>
+    
+
+
+
+
+
+
+
+<%--        <div>
+    <div style="background-color: darkturquoise">
+            <h1><asp:Label ID="Label1" runat="server" Text="2019夏季日劇 凪的新生活( MasterPage 讀取 MasterPage 的 Controls)" ></asp:Label></h1>
+        </div>
+        <div style="background-color: darkturquoise">
+            <asp:HiddenField ID="HiddenField1" runat="server" />
+            <asp:Button ID="Button2" BackColor="darkturquoise" runat="server" Text="全圖" OnClick="Button2_Click" />
+            <asp:Button ID="Button1" BackColor="darkturquoise" runat="server" Text="局部放大" OnClick="Button1_Click" />
+        </div>
+        <div style="background-color: palegoldenrod;  ">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div style="background-color: darkturquoise">
+            <h1><asp:Label ID="Label2" runat="server" Text="MasterPage_Labe2" ></asp:Label></h1>
+        </div>
+        </div>--%>
+
+</body>
+</html>
